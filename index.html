@@ -882,6 +882,9 @@
   --company-logo-url: url("https://www.legello.com/_next/image?url=%2Flogo.png&w=128&q=100");
   --clara-image-url: url("https://raw.githubusercontent.com/Rosendo99er/legello/refs/heads/main/legello-bild.png");
 
+  
+  --temperature: 1.0;
+
   --company-logo-width: 200;
   --company-logo-height: 40px;
   --media-company-logo-width: 150px;
@@ -898,7 +901,7 @@
   --company-font-size-fineprint: 18px;
   --company-font-size-button: 18px;
 
-  --primary-company-color: #3F7670;
+  --primary-company-color: #000;
   --secondary-company-color: #3F7670;
   --tertiary-company-color: #DDDDDD;
   --primary-company-color-dark: #000;
@@ -942,18 +945,18 @@
   --primary-loader-color: var(--secondary-company-color);
   --secondary-loader-color: var(--primary-company-color);
 
---theme-value-1-de: "Wer ist Creditreform München? ";
---theme-text-1-de: "Creditreform München";
---theme-value-2-de: "Welche Produkte und Dienstleistungen bietet Creditreform an? Wie kann mir Creditreform weiterhelfen?";
---theme-text-2-de: "Lösungen";
---theme-value-3-de: "Was ist die Mitgliedschaft bei Creditreform? Wie kann ich Mitglied werden? Welche Vorteile habe ich von einer Mitgliedschaft?";
---theme-text-3-de: "Mitgliedschaft";
---theme-value-4-de: "Wer sind die Ansprechpartner bei Creditreform München und wie kann ich diese errreichen?";
+--theme-value-1-de: "Wer oder was ist Legello und was kann Legello für mich tun? ";
+--theme-text-1-de: "Über Legello";
+--theme-value-2-de: "Was muss ich bei der Benutzung von Legello beachten?";
+--theme-text-2-de: "Gut zu wissen";
+--theme-value-3-de: "Was kostet das Angebot von Legello und was bekomme ich dafür?";
+--theme-text-3-de: "Preise und Leistungen";
+--theme-value-4-de: "Wer sind die Ansprechpartner bei Legello und wie kann ich sie erreichen?";
 --theme-text-4-de: "Ansprechpartner";
---theme-value-5-de: "Welche Veranstaltungen werden von Creditreform München angeboten?";
---theme-text-5-de: "Termine";
---theme-value-6-de: "Welche offenen Job-Angebote gibt es von Creditreform München?";
---theme-text-6-de: "Karriere";
+--theme-value-5-de: "Was sind die häufigsten Fragen anderer User?";
+--theme-text-5-de: "Häufige Fragen";
+--theme-value-6-de: "Wie sehen die AGB von Legello aus?";
+--theme-text-6-de: "Geschäftsbedingungen";
 
 --theme-value-1-en: "Please show me a current overview of my outstanding claims.";
 --theme-text-1-en: "Claims Overview";
@@ -1105,7 +1108,6 @@
   
   :root {
   --rules-context: SchuldnerGlobal;
-  --temperature: 0.3;
   }
   
 
@@ -5364,6 +5366,30 @@
 
 
 
+  .impressum-link {
+      display: inline-block;
+      font-family: var(--company-font-family);
+      font-size: var(--font-size-button);
+      text-decoration: none;
+      padding: 5px 10px;
+      border: 1px solid var(--primary-background-color);
+      border-radius: var(--primary-button-border-radius);
+      background-color: var(--primary-button-color);
+      color: var(--tertiary-font-color);
+      cursor: pointer;
+      width: auto;
+      text-align: center;
+      margin-left: 25px;
+      margin-right: 10px;
+      margin-top: -15px;
+  }
+  
+  .impressum-link:hover {
+      background-color: var(--secondary-button-color);
+  }
+
+
+
   .bot-table, .bot-table th, .bot-table td {
     font-family: var(--company-font-family) !important;
     color: var(--website-standard-font-color-dark) !important;
@@ -6205,8 +6231,8 @@
   
     <div class="title-content">
   
-      <p class="custom0a-p">Hallo, ich bin Chati,</p>
-      <p class="custom0b-p">ich bin gerne für Sie da, wenn Sie Fragen haben oder Unterstützung benötigen. <span class="highlight">Aktivieren Sie die Checkbox</span>, wählen Sie Ihre Sprache und geben Sie in das Feld unten Ihre Frage ein. Ich antworte innerhalb weniger Sekunden.</p>
+      <p class="custom0a-p">Hallo, ich bin Legello,</p>
+      <p class="custom0b-p">ich liefere Ihnen <span class="highlight">KI-Hinweise auf Ihre Rechtsthemen.</span> Aktivieren Sie die Checkbox, wählen Sie Ihre Sprache und geben Sie in das Feld unten Ihre Frage ein. Ich antworte innerhalb weniger Sekunden.</p>
       <p class="custom0c-p">Chat Assistant</p>
 
 
@@ -6436,13 +6462,15 @@
   <div id="footer">
 
     <div id="impressum" class="footer-left">
-      <a href="#" class="footer-link">Impressum</a>
+      <a href="#" class="impressum-link">Impressum</a>
     </div>
     <div id="footer-contact-legello" class="footer-left">
-      <a href="#" target="_blank" class="footer-link" onclick="openConfirmationModal()">Kontakt</a>
       <a href="#" id="FmpRateRP" class="send-email-link">Kontakt</a></p>
     </div>
   
+
+
+
   </div>
   
     
