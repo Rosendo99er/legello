@@ -3,6 +3,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Chatbot</title>
+  <script>
+    if (!window.location.href.includes("nocache")) {
+      const separator = window.location.href.includes("?") ? "&" : "?";
+      const newUrl = window.location.href.split("#")[0] + separator + "nocache=" + new Date().getTime();
+      window.location.href = newUrl;
+    } else {
+      // Entfernen Sie den Parameter aus der Adresszeile nach dem Laden
+      const cleanUrl = window.location.href.split("?")[0];
+      window.history.replaceState(null, null, cleanUrl);
+    }
+  </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" />
   
   <!-- Der Abruf von Google-Fonts darf nur im Kontext "Chati free" aktiviert sein! -->
@@ -13,12 +24,496 @@
   
   <style>
   
+
+
+
+/* ########################itsmydata */ 
+  
+  
+:root {
+  
+  --rules-customer: Legello; 
+  --rules-context: SupportStandard;
+  --temperature: 1.0;
+  
+
+
+  
+  --company-name: "12companions GmbH";
+  --company-street: "Mehlbeerenstr. 2";
+  --company-city: "82024 Taufkirchen b. München";
+  --company-email: "manfred.wolff@creditpass.de";
+  --company-main-url: https://www.legello.com;
+  --company-contact-url: https://www.legello.com;
+  --company-logo-url: url("https://www.legello.com/logo.svg");
+  --clara-image-url: url("https://github.com/Rosendo99er/images/blob/main/Chati-itsmydata.png?raw=true");
+  --start-video-url: "https://player.vimeo.com/video/1049909079?h=ebcefa6f39&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
+
+
+  --company-logo-width: 300px;
+  --company-logo-height: 60px;
+  --media-company-logo-width: 200px;
+  --media-company-logo-height: 40px;
+
+  --company-font-family: 'Quicksand', sans-serif;
+  --company-font-weight: 300;
+  
+  --primary-company-border-radius: 6px;
+  --primary-company-button-border-radius: 6px;
+  --company-font-size-title: 27px;
+  --company-font-size-subtitle: 18px;
+  --company-font-size-text: 18px;
+  --company-font-size-fineprint: 18px;
+  --company-font-size-button: 18px;
+
+
+  --primary-company-color: #000;
+  --secondary-company-color: #3F7670;
+  --tertiary-company-color: #DDDDDD;
+  --primary-company-color-dark: #000;
+  --secondary-company-color-dark: #000;
+  --primary-company-color-light: #DDDDDD;
+  --secondary-company-color-light: #fff;
+  --modal-background: rgba(0, 0, 0, 0.5);
+
+/*
+  --primary-company-color: #1F4556;
+  --secondary-company-color: #BE479F;
+  --tertiary-company-color: #2A8265;
+  --primary-company-color-dark: #1F4556;
+  --secondary-company-color-dark: #2A8265;
+  --primary-company-color-light: #fff;
+  --secondary-company-color-light: #F1F2F3;
+  --modal-background: rgba(0, 0, 0, 0.5);
+*/
+
+  --body-background-color: var(--primary-company-color-light);
+  --primary-background-company-color: var(--primary-company-color-light);
+  --secondary-background-company-color: var(--secondary-company-color-light);
+  --company-logo-background: var(--secondary-company-color-light);
+
+  --primary-background-color: var(--primary-company-color-light);
+  --secondary-background-color: var(--secondary-company-color-light);
+  --special-background-color: var(--primary-company-color);
+
+  --primary-border-color:   var(--tertiary-company-color);
+  --secondary-border-color: var(--primary-company-color);
+  --tertiary-border-color:  var(--secondary-company-color);
+
+  --form-and-field-background-color: var(--primary-company-color-light);
+  --form-and-field-background-color-focus: var(--primary-company-color-light);
+
+  --form-and-field-border-color: var(--primary-company-color);
+  --form-and-field-border-color-focus: var(--secondary-company-color);
+  
+  --primary-font-color: var(--primary-company-color);
+  --secondary-font-color: var(--secondary-company-color);
+  --tertiary-font-color:  var(--primary-company-color-light);
+  --website-standard-font-color-dark: var(--secondary-company-color-dark);
+  --placeholder-standard-font-color: var(--tertiary-company-color);
+
+  --primary-link-color: var(--primary-company-color);
+  --secondary-link-color: var(--secondary-company-color);
+
+  --primary-button-color: var(--primary-company-color);
+  --secondary-button-color: var(--secondary-company-color);
+  --tertiary-button-color: var(--tertiary-company-color);
+
+  --primary-loader-color: var(--secondary-company-color);
+  --secondary-loader-color: var(--primary-company-color);
+
+  --video-background-color: var(--secondary-company-color-light);
+  --video-border-color: var(--secondary-company-color-light);
+  
+--theme-value-1-de: "Wer oder was ist Legello und was kann Legello für mich tun? ";
+--theme-text-1-de: "Über Legello";
+--theme-value-2-de: "Was muss ich bei der Benutzung von Legello beachten?";
+--theme-text-2-de: "Gut zu wissen";
+--theme-value-3-de: "Was kostet das Angebot von Legello und was bekomme ich dafür?";
+--theme-text-3-de: "Preise und Leistungen";
+--theme-value-4-de: "Wer sind die Ansprechpartner bei Legello und wie kann ich sie erreichen?";
+--theme-text-4-de: "Ansprechpartner";
+--theme-value-5-de: "Was sind die häufigsten Fragen anderer User?";
+--theme-text-5-de: "Häufige Fragen";
+--theme-value-6-de: "Wie sehen die AGB von Legello aus?";
+--theme-text-6-de: "Geschäftsbedingungen";
+--theme-value-7-de: "Was genau ist Chati und wer steckt dahinter?";
+--theme-text-7-de: "Über Chati";
+
+--theme-value-1-en: "Who or what is Chati?";
+--theme-text-1-en: "Get to know Chati";
+--theme-value-2-en: "What do I need to do to use Chati in my company?";
+--theme-text-2-en: "Use Chati";
+--theme-value-3-en: "How can I customize Chati to my needs?";
+--theme-text-3-en: "Configure Chati";
+--theme-value-4-en: "What benefits do I gain from using Chati?";
+--theme-text-4-en: "Learn about Chati's benefits";
+--theme-value-5-en: "How does Chati work? How does Chati handle data protection? What security features does Chati use?";
+--theme-text-5-en: "Trust Chati";
+--theme-value-6-en: "Who or what is cream collection?";
+--theme-text-6-en: "About creamco";
+
+--theme-value-1-es: "¿Quién o qué es Chati?";
+--theme-text-1-es: "Conocer Chati";
+--theme-value-2-es: "¿Qué necesito hacer para usar Chati en mi empresa?";
+--theme-text-2-es: "Usar Chati";
+--theme-value-3-es: "¿Cómo puedo personalizar Chati según mis necesidades?";
+--theme-text-3-es: "Configurar Chati";
+--theme-value-4-es: "¿Qué beneficios obtengo al usar Chati?";
+--theme-text-4-es: "Conocer los beneficios de Chati";
+--theme-value-5-es: "¿Cómo funciona Chati? ¿Cómo maneja Chati la protección de datos? ¿Qué características de seguridad usa Chati?";
+--theme-text-5-es: "Confiar en Chati";
+--theme-value-6-es: "¿Quién o qué es cream collection?";
+--theme-text-6-es: "Acerca de creamco";
+
+--theme-value-1-tr: "Chati nedir veya kimdir?";
+--theme-text-1-tr: "Chati'yi tanıyın";
+--theme-value-2-tr: "Chati'yi şirketimde kullanmak için ne yapmam gerekiyor?";
+--theme-text-2-tr: "Chati'yi kullanın";
+--theme-value-3-tr: "Chati'yi ihtiyaçlarıma nasıl uyarlayabilirim?";
+--theme-text-3-tr: "Chati'yi yapılandırın";
+--theme-value-4-tr: "Chati'yi kullanarak ne gibi faydalar elde edebilirim?";
+--theme-text-4-tr: "Chati'nin faydalarını öğrenin";
+--theme-value-5-tr: "Chati nasıl çalışır? Chati veri korumasını nasıl ele alır? Hangi güvenlik özelliklerini kullanır?";
+--theme-text-5-tr: "Chati'ye güvenin";
+--theme-value-6-tr: "Cream collection nedir veya kimdir?";
+--theme-text-6-tr: "Creamco hakkında";
+
+--theme-value-1-sa: "ما هو أو من هو شاتي؟";
+--theme-text-1-sa: "تعرف على شاتي";
+--theme-value-2-sa: "ماذا أحتاج لفعله لاستخدام شاتي في شركتي؟";
+--theme-text-2-sa: "استخدام شاتي";
+--theme-value-3-sa: "كيف يمكنني تخصيص شاتي لاحتياجاتي؟";
+--theme-text-3-sa: "تخصيص شاتي";
+--theme-value-4-sa: "ما الفوائد التي أحصل عليها من استخدام شاتي؟";
+--theme-text-4-sa: "تعرف على فوائد شاتي";
+--theme-value-5-sa: "كيف يعمل شاتي؟ كيف يتعامل شاتي مع حماية البيانات؟ وما هي ميزات الأمان التي يستخدمها؟";
+--theme-text-5-sa: "الثقة بشاتي";
+--theme-value-6-sa: "ما هي cream collection؟";
+--theme-text-6-sa: "حول creamco";
+
+--theme-value-1-ru: "Кто или что такое Chati?";
+--theme-text-1-ru: "Познакомьтесь с Chati";
+--theme-value-2-ru: "Что мне нужно сделать, чтобы использовать Chati в моей компании?";
+--theme-text-2-ru: "Использовать Chati";
+--theme-value-3-ru: "Как я могу настроить Chati под свои нужды?";
+--theme-text-3-ru: "Настроить Chati";
+--theme-value-4-ru: "Какие преимущества я получаю от использования Chati?";
+--theme-text-4-ru: "Узнайте о преимуществах Chati";
+--theme-value-5-ru: "Как работает Chati? Как Chati обрабатывает защиту данных? Какие функции безопасности использует?";
+--theme-text-5-ru: "Доверьтесь Chati";
+--theme-value-6-ru: "Кто или что такое cream collection?";
+--theme-text-6-ru: "О creamco";
+
+--theme-value-1-pl: "Kim lub czym jest Chati?";
+--theme-text-1-pl: "Poznaj Chati";
+--theme-value-2-pl: "Co muszę zrobić, aby używać Chati w mojej firmie?";
+--theme-text-2-pl: "Używaj Chati";
+--theme-value-3-pl: "Jak mogę dostosować Chati do swoich potrzeb?";
+--theme-text-3-pl: "Skonfiguruj Chati";
+--theme-value-4-pl: "Jakie korzyści zyskuję, używając Chati?";
+--theme-text-4-pl: "Poznaj korzyści Chati";
+--theme-value-5-pl: "Jak działa Chati? Jak Chati radzi sobie z ochroną danych? Jakie funkcje bezpieczeństwa wykorzystuje?";
+--theme-text-5-pl: "Zaufaj Chati";
+--theme-value-6-pl: "Kim lub czym jest cream collection?";
+--theme-text-6-pl: "O creamco";
+
+--theme-value-1-ro: "Cine sau ce este Chati?";
+--theme-text-1-ro: "Cunoaște Chati";
+--theme-value-2-ro: "Ce trebuie să fac pentru a folosi Chati în compania mea?";
+--theme-text-2-ro: "Folosește Chati";
+--theme-value-3-ro: "Cum pot personaliza Chati pentru nevoile mele?";
+--theme-text-3-ro: "Configurează Chati";
+--theme-value-4-ro: "Ce beneficii obțin utilizând Chati?";
+--theme-text-4-ro: "Află despre beneficiile Chati";
+--theme-value-5-ro: "Cum funcționează Chati? Cum gestionează Chati protecția datelor? Ce caracteristici de securitate folosește?";
+--theme-text-5-ro: "Ai încredere în Chati";
+--theme-value-6-ro: "Cine sau ce este cream collection?";
+--theme-text-6-ro: "Despre creamco";
+
+--theme-value-1-gr: "Τι είναι το Chati;";
+--theme-text-1-gr: "Γνωρίστε το Chati";
+--theme-value-2-gr: "Τι πρέπει να κάνω για να χρησιμοποιήσω το Chati στην εταιρεία μου;";
+--theme-text-2-gr: "Χρησιμοποιήστε το Chati";
+--theme-value-3-gr: "Πώς μπορώ να προσαρμόσω το Chati στις ανάγκες μου;";
+--theme-text-3-gr: "Διαμορφώστε το Chati";
+--theme-value-4-gr: "Τι οφέλη αποκομίζω χρησιμοποιώντας το Chati;";
+--theme-text-4-gr: "Μάθετε για τα οφέλη του Chati";
+--theme-value-5-gr: "Πώς λειτουργεί το Chati; Πώς διαχειρίζεται το Chati την προστασία δεδομένων; Ποιες λειτουργίες ασφαλείας χρησιμοποιεί;";
+--theme-text-5-gr: "Εμπιστευθείτε το Chati";
+--theme-value-6-gr: "Τι είναι το cream collection;";
+--theme-text-6-gr: "Σχετικά με το creamco";
+
+--theme-value-1-it: "Chi o cosa è Chati?";
+--theme-text-1-it: "Conosci Chati";
+--theme-value-2-it: "Cosa devo fare per utilizzare Chati nella mia azienda?";
+--theme-text-2-it: "Usa Chati";
+--theme-value-3-it: "Come posso personalizzare Chati per le mie esigenze?";
+--theme-text-3-it: "Configura Chati";
+--theme-value-4-it: "Quali benefici ottengo utilizzando Chati?";
+--theme-text-4-it: "Scopri i benefici di Chati";
+--theme-value-5-it: "Come funziona Chati? Come gestisce la protezione dei dati? Quali funzioni di sicurezza utilizza?";
+--theme-text-5-it: "Fidati di Chati";
+--theme-value-6-it: "Chi o cosa è cream collection?";
+--theme-text-6-it: "Informazioni su creamco";
+}
+
+
+/*  ######################## Ende itsmydata ######################## */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* ########################itsmydata 
+  
+  
+  :root {
+  
+    --rules-customer: itsmydata; 
+    --rules-context: SupportStandard;
+    --temperature: 1.0;
+    
+    --company-name: "itsmydata GmbH";
+    --company-street: "Birkenleiten 43";
+    --company-city: "81543 München";
+    --company-email: "marco.pawlowski@itsmydata.de";
+    --company-main-url: https://www.itsmydata.de;
+    --company-contact-url: https://itsmydata.de/kontakt/;
+    --company-logo-url: url("https://raw.githubusercontent.com/Rosendo99er/images/refs/heads/main/wortmarke_itsmydata.png");
+    --clara-image-url: url("https://github.com/Rosendo99er/images/blob/main/Chati-itsmydata.png?raw=true");
+    --start-video-url: "https://player.vimeo.com/video/1049909079?h=ebcefa6f39&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
+  
+
+    --company-logo-width: 300px;
+    --company-logo-height: 60px;
+    --media-company-logo-width: 200px;
+    --media-company-logo-height: 40px;
+  
+    --company-font-family: 'Quicksand', sans-serif;
+    --company-font-weight: 300;
+    
+    --primary-company-border-radius: 12px;
+    --primary-company-button-border-radius: 12px;
+    --company-font-size-title: 27px;
+    --company-font-size-subtitle: 18px;
+    --company-font-size-text: 18px;
+    --company-font-size-fineprint: 18px;
+    --company-font-size-button: 18px;
+  
+    --primary-company-color: #1F4556;
+    --secondary-company-color: #BE479F;
+    --tertiary-company-color: #2A8265;
+    --primary-company-color-dark: #1F4556;
+    --secondary-company-color-dark: #2A8265;
+    --primary-company-color-light: #fff;
+    --secondary-company-color-light: #F1F2F3;
+    --modal-background: rgba(0, 0, 0, 0.5);
+  
+    --body-background-color: var(--primary-company-color-light);
+    --primary-background-company-color: var(--primary-company-color-light);
+    --secondary-background-company-color: var(--secondary-company-color-light);
+    --company-logo-background: var(--secondary-company-color-light);
+  
+    --primary-background-color: var(--primary-company-color-light);
+    --secondary-background-color: var(--secondary-company-color-light);
+    --special-background-color: var(--primary-company-color);
+  
+    --primary-border-color:   var(--tertiary-company-color);
+    --secondary-border-color: var(--primary-company-color);
+    --tertiary-border-color:  var(--secondary-company-color);
+  
+    --form-and-field-background-color: var(--primary-company-color-light);
+    --form-and-field-background-color-focus: var(--primary-company-color-light);
+  
+    --form-and-field-border-color: var(--primary-company-color);
+    --form-and-field-border-color-focus: var(--secondary-company-color);
+    
+    --primary-font-color: var(--primary-company-color);
+    --secondary-font-color: var(--secondary-company-color);
+    --tertiary-font-color:  var(--primary-company-color-light);
+    --website-standard-font-color-dark: var(--secondary-company-color-dark);
+    --placeholder-standard-font-color: var(--tertiary-company-color);
+  
+    --primary-link-color: var(--primary-company-color);
+    --secondary-link-color: var(--secondary-company-color);
+  
+    --primary-button-color: var(--primary-company-color);
+    --secondary-button-color: var(--secondary-company-color);
+    --tertiary-button-color: var(--tertiary-company-color);
+  
+    --primary-loader-color: var(--secondary-company-color);
+    --secondary-loader-color: var(--primary-company-color);
+
+    --video-background-color: var(--secondary-company-color-light);
+    --video-border-color: var(--secondary-company-color-light);
+    
+  --theme-value-1-de: "Wer ist die Firma itsmydata und was macht sie genau?";
+  --theme-text-1-de: "Über itsmydata";
+  --theme-value-2-de: "Was ist der BonitätsPass von itsmydata? Für welchen Zweck kann ich ihn einsetzen? Was unterscheidet den BonitätsPass von der MieterMappe?";
+  --theme-text-2-de: "BonitätsPass";
+  --theme-value-3-de: "Was ist die MieterMappe von itsmydata? Für welchen Zweck kann ich sie einsetzen? Was unterscheidet die Mietermappe vom BonitätsPass?";
+  --theme-text-3-de: "MieterMappe";
+  --theme-value-4-de: "Wie kann ich eine Nachricht an itsmydata senden";
+  --theme-text-4-de: "Kontakt";
+  --theme-value-5-de: "Ich möchte mit einem persönlichen Ansprechpartner bei itsmydata sprechen. Wie kann ich jemanden erreichen?";
+  --theme-text-5-de: "Ansprechpartner";
+  --theme-value-6-de: "Was genau ist Chati und wer steckt dahinter?";
+  --theme-text-6-de: "Über Chati";
+  
+  --theme-value-1-en: "Who or what is Chati?";
+  --theme-text-1-en: "Get to know Chati";
+  --theme-value-2-en: "What do I need to do to use Chati in my company?";
+  --theme-text-2-en: "Use Chati";
+  --theme-value-3-en: "How can I customize Chati to my needs?";
+  --theme-text-3-en: "Configure Chati";
+  --theme-value-4-en: "What benefits do I gain from using Chati?";
+  --theme-text-4-en: "Learn about Chati's benefits";
+  --theme-value-5-en: "How does Chati work? How does Chati handle data protection? What security features does Chati use?";
+  --theme-text-5-en: "Trust Chati";
+  --theme-value-6-en: "Who or what is cream collection?";
+  --theme-text-6-en: "About creamco";
+  
+  --theme-value-1-es: "¿Quién o qué es Chati?";
+  --theme-text-1-es: "Conocer Chati";
+  --theme-value-2-es: "¿Qué necesito hacer para usar Chati en mi empresa?";
+  --theme-text-2-es: "Usar Chati";
+  --theme-value-3-es: "¿Cómo puedo personalizar Chati según mis necesidades?";
+  --theme-text-3-es: "Configurar Chati";
+  --theme-value-4-es: "¿Qué beneficios obtengo al usar Chati?";
+  --theme-text-4-es: "Conocer los beneficios de Chati";
+  --theme-value-5-es: "¿Cómo funciona Chati? ¿Cómo maneja Chati la protección de datos? ¿Qué características de seguridad usa Chati?";
+  --theme-text-5-es: "Confiar en Chati";
+  --theme-value-6-es: "¿Quién o qué es cream collection?";
+  --theme-text-6-es: "Acerca de creamco";
+  
+  --theme-value-1-tr: "Chati nedir veya kimdir?";
+  --theme-text-1-tr: "Chati'yi tanıyın";
+  --theme-value-2-tr: "Chati'yi şirketimde kullanmak için ne yapmam gerekiyor?";
+  --theme-text-2-tr: "Chati'yi kullanın";
+  --theme-value-3-tr: "Chati'yi ihtiyaçlarıma nasıl uyarlayabilirim?";
+  --theme-text-3-tr: "Chati'yi yapılandırın";
+  --theme-value-4-tr: "Chati'yi kullanarak ne gibi faydalar elde edebilirim?";
+  --theme-text-4-tr: "Chati'nin faydalarını öğrenin";
+  --theme-value-5-tr: "Chati nasıl çalışır? Chati veri korumasını nasıl ele alır? Hangi güvenlik özelliklerini kullanır?";
+  --theme-text-5-tr: "Chati'ye güvenin";
+  --theme-value-6-tr: "Cream collection nedir veya kimdir?";
+  --theme-text-6-tr: "Creamco hakkında";
+  
+  --theme-value-1-sa: "ما هو أو من هو شاتي؟";
+  --theme-text-1-sa: "تعرف على شاتي";
+  --theme-value-2-sa: "ماذا أحتاج لفعله لاستخدام شاتي في شركتي؟";
+  --theme-text-2-sa: "استخدام شاتي";
+  --theme-value-3-sa: "كيف يمكنني تخصيص شاتي لاحتياجاتي؟";
+  --theme-text-3-sa: "تخصيص شاتي";
+  --theme-value-4-sa: "ما الفوائد التي أحصل عليها من استخدام شاتي؟";
+  --theme-text-4-sa: "تعرف على فوائد شاتي";
+  --theme-value-5-sa: "كيف يعمل شاتي؟ كيف يتعامل شاتي مع حماية البيانات؟ وما هي ميزات الأمان التي يستخدمها؟";
+  --theme-text-5-sa: "الثقة بشاتي";
+  --theme-value-6-sa: "ما هي cream collection؟";
+  --theme-text-6-sa: "حول creamco";
+  
+  --theme-value-1-ru: "Кто или что такое Chati?";
+  --theme-text-1-ru: "Познакомьтесь с Chati";
+  --theme-value-2-ru: "Что мне нужно сделать, чтобы использовать Chati в моей компании?";
+  --theme-text-2-ru: "Использовать Chati";
+  --theme-value-3-ru: "Как я могу настроить Chati под свои нужды?";
+  --theme-text-3-ru: "Настроить Chati";
+  --theme-value-4-ru: "Какие преимущества я получаю от использования Chati?";
+  --theme-text-4-ru: "Узнайте о преимуществах Chati";
+  --theme-value-5-ru: "Как работает Chati? Как Chati обрабатывает защиту данных? Какие функции безопасности использует?";
+  --theme-text-5-ru: "Доверьтесь Chati";
+  --theme-value-6-ru: "Кто или что такое cream collection?";
+  --theme-text-6-ru: "О creamco";
+  
+  --theme-value-1-pl: "Kim lub czym jest Chati?";
+  --theme-text-1-pl: "Poznaj Chati";
+  --theme-value-2-pl: "Co muszę zrobić, aby używać Chati w mojej firmie?";
+  --theme-text-2-pl: "Używaj Chati";
+  --theme-value-3-pl: "Jak mogę dostosować Chati do swoich potrzeb?";
+  --theme-text-3-pl: "Skonfiguruj Chati";
+  --theme-value-4-pl: "Jakie korzyści zyskuję, używając Chati?";
+  --theme-text-4-pl: "Poznaj korzyści Chati";
+  --theme-value-5-pl: "Jak działa Chati? Jak Chati radzi sobie z ochroną danych? Jakie funkcje bezpieczeństwa wykorzystuje?";
+  --theme-text-5-pl: "Zaufaj Chati";
+  --theme-value-6-pl: "Kim lub czym jest cream collection?";
+  --theme-text-6-pl: "O creamco";
+  
+  --theme-value-1-ro: "Cine sau ce este Chati?";
+  --theme-text-1-ro: "Cunoaște Chati";
+  --theme-value-2-ro: "Ce trebuie să fac pentru a folosi Chati în compania mea?";
+  --theme-text-2-ro: "Folosește Chati";
+  --theme-value-3-ro: "Cum pot personaliza Chati pentru nevoile mele?";
+  --theme-text-3-ro: "Configurează Chati";
+  --theme-value-4-ro: "Ce beneficii obțin utilizând Chati?";
+  --theme-text-4-ro: "Află despre beneficiile Chati";
+  --theme-value-5-ro: "Cum funcționează Chati? Cum gestionează Chati protecția datelor? Ce caracteristici de securitate folosește?";
+  --theme-text-5-ro: "Ai încredere în Chati";
+  --theme-value-6-ro: "Cine sau ce este cream collection?";
+  --theme-text-6-ro: "Despre creamco";
+  
+  --theme-value-1-gr: "Τι είναι το Chati;";
+  --theme-text-1-gr: "Γνωρίστε το Chati";
+  --theme-value-2-gr: "Τι πρέπει να κάνω για να χρησιμοποιήσω το Chati στην εταιρεία μου;";
+  --theme-text-2-gr: "Χρησιμοποιήστε το Chati";
+  --theme-value-3-gr: "Πώς μπορώ να προσαρμόσω το Chati στις ανάγκες μου;";
+  --theme-text-3-gr: "Διαμορφώστε το Chati";
+  --theme-value-4-gr: "Τι οφέλη αποκομίζω χρησιμοποιώντας το Chati;";
+  --theme-text-4-gr: "Μάθετε για τα οφέλη του Chati";
+  --theme-value-5-gr: "Πώς λειτουργεί το Chati; Πώς διαχειρίζεται το Chati την προστασία δεδομένων; Ποιες λειτουργίες ασφαλείας χρησιμοποιεί;";
+  --theme-text-5-gr: "Εμπιστευθείτε το Chati";
+  --theme-value-6-gr: "Τι είναι το cream collection;";
+  --theme-text-6-gr: "Σχετικά με το creamco";
+  
+  --theme-value-1-it: "Chi o cosa è Chati?";
+  --theme-text-1-it: "Conosci Chati";
+  --theme-value-2-it: "Cosa devo fare per utilizzare Chati nella mia azienda?";
+  --theme-text-2-it: "Usa Chati";
+  --theme-value-3-it: "Come posso personalizzare Chati per le mie esigenze?";
+  --theme-text-3-it: "Configura Chati";
+  --theme-value-4-it: "Quali benefici ottengo utilizzando Chati?";
+  --theme-text-4-it: "Scopri i benefici di Chati";
+  --theme-value-5-it: "Come funziona Chati? Come gestisce la protezione dei dati? Quali funzioni di sicurezza utilizza?";
+  --theme-text-5-it: "Fidati di Chati";
+  --theme-value-6-it: "Chi o cosa è cream collection?";
+  --theme-text-6-it: "Informazioni su creamco";
+  }
+  
+  
+  ######################## Ende itsmydata ######################## */
+
+
+
+
+
+
+
+
+
+
   /* ########################creamco
   
   
   :root {
   
     --rules-customer: creamco; 
+    --rules-context: SalesGlobal;
+    --temperature: 1.0;
+
     --company-name: "cream collection Stephan Vila";
     --company-street: "Roswithastraße 28";
     --company-city: "45131 Essen";
@@ -27,6 +522,7 @@
     --company-contact-url: https://www.cream-collection.de/kontakt;
     --company-logo-url: url("https://www.cream-collection.de/wp-content/uploads/go-x/u/59b84de7-525d-4992-99ec-ac57b73c25b6/image-640x211.png");
     --clara-image-url: url("https://www.cream-collection.de/wp-content/uploads/go-x/u/8b4f2525-c964-461b-a6a9-daa9ef61f180/l0,t0,w482,h410/image-240x204.jpg");
+    --start-video-url: "https://www.youtube.com/embed/HPTBJFIzdCo";
   
     --company-logo-width: 200px;
     --company-logo-height: 80px;
@@ -87,6 +583,9 @@
   
     --primary-loader-color: var(--secondary-company-color);
     --secondary-loader-color: var(--primary-company-color);
+
+    --video-background-color: var(--secondary-company-color-light);
+    --video-border-color: var(--secondary-company-color-light);
     
   --theme-value-1-de: "Wer oder was ist Chati?";
   --theme-text-1-de: "Chati kennenlernen";
@@ -236,6 +735,10 @@
   :root {
   
     --rules-customer: creamco; 
+    --rules-context: SchuldnerGlobal;
+    --temperature: 0.3;
+
+
     --company-name: "cream collection Stephan Vila";
     --company-street: "Roswithastraße 28";
     --company-city: "45131 Essen";
@@ -244,12 +747,15 @@
     --company-contact-url: https://www.cream-collection.de/kontakt;
     --company-logo-url: url("https://www.cream-collection.de/wp-content/uploads/go-x/u/59b84de7-525d-4992-99ec-ac57b73c25b6/image-640x211.png");
     --clara-image-url: url("https://www.cream-collection.de/wp-content/uploads/go-x/u/8b4f2525-c964-461b-a6a9-daa9ef61f180/l0,t0,w482,h410/image-240x204.jpg");
-  
+    --start-video-url: "https://player.vimeo.com/video/1049572459?h=a853da66b9&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
+
+    
+ 
     --company-logo-width: 200px;
     --company-logo-height: 80px;
     --media-company-logo-width: 200px;
     --media-company-logo-height: 40px;
-  
+      
     --company-font-family: 'Quicksand', sans-serif;
     --company-font-weight: 300;
     
@@ -304,6 +810,9 @@
   
     --primary-loader-color: var(--secondary-company-color);
     --secondary-loader-color: var(--primary-company-color);
+
+    --video-background-color: var(--secondary-company-color-light);
+    --video-border-color: var(--secondary-company-color-light);
   
 --theme-value-1-de: "Bitte zeigen Sie mir eine aktuelle Forderungsaufstellung an.";
 --theme-text-1-de: "Forderungsaufstellung";
@@ -446,7 +955,10 @@
   
 :root {
   
-  --rules-customer: crefoMünchen; 
+  --rules-customer: crefoMünchen;
+  --rules-context: SchuldnerGlobal;
+  --temperature: 0.3;
+
   --company-name: "Creditreform München";
   --company-street: "Machtlfinger Straße 13";
   --company-city: "81379 München";
@@ -454,7 +966,9 @@
   --company-main-url: https://www.creditreform.de/muenchen;
   --company-contact-url: https://www.creditreform.de/muenchen/creditreform/kontakt;
   --company-logo-url: url("https://raw.githubusercontent.com/Rosendo99er/images/refs/heads/main/LogoCreditreformMuenchen.png");
-  --clara-image-url: url("https://raw.githubusercontent.com/Rosendo99er/images/refs/heads/main/iStock-2167773182-modified-8e1865b3-9c16-49bb-bd42-1a1fc824f9ff.jpg");
+  --clara-image-url: url("https://raw.githubusercontent.com/Rosendo99er/CrefoMucStandard/refs/heads/main/iStock-2167773181-modified-9e1a1859-29ee-4093-be3d-3d1a1bc98075.jpg");
+  --start-video-url: "https://player.vimeo.com/video/1049241820?h=fd16354182&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
+
 
   --company-logo-width: 300px;
   --company-logo-height: 80px;
@@ -662,6 +1176,9 @@
 :root {
   
   --rules-customer: crefoMünchenSales; 
+  --rules-context: SalesGlobal;
+  --temperature: 1.0;
+
   --company-name: "Creditreform München";
   --company-street: "Machtlfinger Straße 13";
   --company-city: "81379 München";
@@ -669,7 +1186,8 @@
   --company-main-url: https://www.creditreform.de/muenchen;
   --company-contact-url: https://www.creditreform.de/muenchen/creditreform/kontakt;
   --company-logo-url: url("https://raw.githubusercontent.com/Rosendo99er/images/refs/heads/main/LogoCreditreformMuenchen.png");
-  --clara-image-url: url("https://raw.githubusercontent.com/Rosendo99er/images/refs/heads/main/iStock-2167773182-modified-8e1865b3-9c16-49bb-bd42-1a1fc824f9ff.jpg");
+  --clara-image-url: url("https://raw.githubusercontent.com/Rosendo99er/CrefoMucStandard/refs/heads/main/iStock-2167773181-modified-9e1a1859-29ee-4093-be3d-3d1a1bc98075.jpg");
+  --start-video-url: "https://www.youtube.com/embed/A0UWBc44Gws";
 
   --company-logo-width: 300px;
   --company-logo-height: 80px;
@@ -730,6 +1248,9 @@
 
   --primary-loader-color: var(--secondary-company-color);
   --secondary-loader-color: var(--primary-company-color);
+
+  --video-background-color: var(--secondary-company-color-light);
+  --video-border-color: var(--secondary-company-color-light);
 
 --theme-value-1-de: "Wer ist Creditreform München? ";
 --theme-text-1-de: "Creditreform München";
@@ -863,222 +1384,10 @@
 }
 
 
-  ######################## Ende Creditreform München Vertrieb ######################## */
+ ######################## Ende Creditreform München Vertrieb ######################## */
 
 
   
-/* ######################## legello  ######################## */
-  
-  
-:root {
-  
-  --rules-customer: Legello; 
-  --company-name: "12companions GmbH";
-  --company-street: "Mehlbeerenstr. 2";
-  --company-city: "82024 Taufkirchen b. München";
-  --company-email: "stephan.vila@cream-collection.de";
-  --company-main-url: https://www.legello.com;
-  --company-contact-url: https://www.creditreform.de/muenchen/creditreform/kontakt;
-  --company-logo-url: url("https://www.legello.com/_next/image?url=%2Flogo.png&w=128&q=100");
-  --clara-image-url: url("https://raw.githubusercontent.com/Rosendo99er/legello/refs/heads/main/legello-bild.png");
-
-  
-  --temperature: 1.0;
-
-  --company-logo-width: 200;
-  --company-logo-height: 40px;
-  --media-company-logo-width: 150px;
-  --media-company-logo-height: 40px;
-
-  --company-font-family: 'Quicksand', sans-serif;
-  --company-font-weight: 300;
-  
-  --primary-company-border-radius: 6px;
-  --primary-company-button-border-radius: 6px;
-  --company-font-size-title: 27px;
-  --company-font-size-subtitle: 18px;
-  --company-font-size-text: 18px;
-  --company-font-size-fineprint: 18px;
-  --company-font-size-button: 18px;
-
-  --primary-company-color: #000;
-  --secondary-company-color: #3F7670;
-  --tertiary-company-color: #DDDDDD;
-  --primary-company-color-dark: #000;
-  --secondary-company-color-dark: #3F7670;
-  --primary-company-color-light: #DDDDDD;
-  --secondary-company-color-light: #fff;
-  --modal-background: rgba(0, 0, 0, 0.5);
-
-  --body-background-color: var(--primary-company-color-light);
-  --primary-background-company-color: var(--primary-company-color-light);
-  --secondary-background-company-color: var(--secondary-company-color-light);
-  --company-logo-background: var(--secondary-company-color-light);
-
-  --primary-background-color: var(--primary-company-color-light);
-  --secondary-background-color: var(--secondary-company-color-light);
-  --special-background-color: var(--primary-company-color);
-
-  --primary-border-color:   var(--tertiary-company-color);
-  --secondary-border-color: var(--primary-company-color);
-  --tertiary-border-color:  var(--secondary-company-color);
-
-  --form-and-field-background-color: var(--primary-company-color-light);
-  --form-and-field-background-color-focus: var(--secondary-company-color-light);
-
-  --form-and-field-border-color: var(--primary-company-color);
-  --form-and-field-border-color-focus: var(--secondary-company-color);
-  
-  --primary-font-color: var(--primary-company-color);
-  --secondary-font-color: var(--secondary-company-color);
-  --tertiary-font-color:  var(--primary-company-color-light);
-  --website-standard-font-color-dark: var(--secondary-company-color-dark);
-  --placeholder-standard-font-color: var(--secondary-company-color);
-
-  --primary-link-color: var(--primary-company-color);
-  --secondary-link-color: var(--secondary-company-color);
-
-  --primary-button-color: var(--primary-company-color);
-  --secondary-button-color: var(--secondary-company-color);
-  --tertiary-button-color: var(--tertiary-company-color);
-
-  --primary-loader-color: var(--secondary-company-color);
-  --secondary-loader-color: var(--primary-company-color);
-
---theme-value-1-de: "Wer oder was ist Legello und was kann Legello für mich tun? ";
---theme-text-1-de: "Über Legello";
---theme-value-2-de: "Was muss ich bei der Benutzung von Legello beachten?";
---theme-text-2-de: "Gut zu wissen";
---theme-value-3-de: "Was kostet das Angebot von Legello und was bekomme ich dafür?";
---theme-text-3-de: "Preise und Leistungen";
---theme-value-4-de: "Wer sind die Ansprechpartner bei Legello und wie kann ich sie erreichen?";
---theme-text-4-de: "Ansprechpartner";
---theme-value-5-de: "Was sind die häufigsten Fragen anderer User?";
---theme-text-5-de: "Häufige Fragen";
---theme-value-6-de: "Wie sehen die AGB von Legello aus?";
---theme-text-6-de: "Geschäftsbedingungen";
-
---theme-value-1-en: "Please show me a current overview of my outstanding claims.";
---theme-text-1-en: "Claims Overview";
---theme-value-2-en: "Please show me a current overview of my payments made.";
---theme-text-2-en: "Payment History";
---theme-value-3-en: "I want to apply for an installment plan.";
---theme-text-3-en: "Installment Plan";
---theme-value-4-en: "I am currently unable to pay the claim. Can you grant me a payment deferral?";
---theme-text-4-en: "Payment Deferral";
---theme-value-5-en: "I object to the claim.";
---theme-text-5-en: "Objection";
---theme-value-6-en: "I am fundamentally unable to pay the claim.";
---theme-text-6-en: "Insolvency";
-
---theme-value-1-es: "Por favor, muéstreme un resumen actual de mis deudas pendientes.";
---theme-text-1-es: "Resumen de Deudas";
---theme-value-2-es: "Por favor, muéstreme un resumen actual de mis pagos realizados.";
---theme-text-2-es: "Historial de Pagos";
---theme-value-3-es: "Quiero solicitar un plan de pagos a plazos.";
---theme-text-3-es: "Pago a Plazos";
---theme-value-4-es: "Actualmente no puedo pagar la deuda. ¿Podrían concederme una prórroga de pago?";
---theme-text-4-es: "Prórroga de Pago";
---theme-value-5-es: "Rechazo la deuda.";
---theme-text-5-es: "Rechazo";
---theme-value-6-es: "No puedo pagar la deuda en absoluto.";
---theme-text-6-es: "Insolvencia";
-
---theme-value-1-tr: "Lütfen mevcut borç durumumu gösterin.";
---theme-text-1-tr: "Borç Durumu";
---theme-value-2-tr: "Lütfen yaptığım ödemelerin güncel bir özetini gösterin.";
---theme-text-2-tr: "Ödeme Geçmişi";
---theme-value-3-tr: "Taksitli ödeme talep etmek istiyorum.";
---theme-text-3-tr: "Taksit Planı";
---theme-value-4-tr: "Şu anda borcu ödeyemiyorum. Bana ödeme ertelemesi yapabilir misiniz?";
---theme-text-4-tr: "Ödeme Ertelemesi";
---theme-value-5-tr: "Borcu reddediyorum.";
---theme-text-5-tr: "İtiraz";
---theme-value-6-tr: "Borcu kesinlikle ödeyemem.";
---theme-text-6-tr: "Ödeme Güçlüğü";
-
---theme-value-1-sa: "يرجى عرض ملخص حديث لمطالباتي غير المسددة.";
---theme-text-1-sa: "ملخص المطالبات";
---theme-value-2-sa: "يرجى عرض ملخص حديث للمدفوعات التي قمت بها.";
---theme-text-2-sa: "سجل المدفوعات";
---theme-value-3-sa: "أريد التقدم بطلب لسداد الأقساط.";
---theme-text-3-sa: "خطة الأقساط";
---theme-value-4-sa: "لا يمكنني حاليًا دفع المطالبة. هل يمكنكم منح تأجيل للسداد؟";
---theme-text-4-sa: "تأجيل السداد";
---theme-value-5-sa: "أعترض على المطالبة.";
---theme-text-5-sa: "اعتراض";
---theme-value-6-sa: "لا أستطيع دفع المطالبة على الإطلاق.";
---theme-text-6-sa: "إعسار";
-
---theme-value-1-ru: "Пожалуйста, покажите мне актуальный обзор моих непогашенных требований.";
---theme-text-1-ru: "Обзор требований";
---theme-value-2-ru: "Пожалуйста, покажите мне актуальный обзор моих платежей.";
---theme-text-2-ru: "История платежей";
---theme-value-3-ru: "Я хочу подать заявку на рассрочку.";
---theme-text-3-ru: "План рассрочки";
---theme-value-4-ru: "В настоящее время я не могу оплатить требование. Можете ли вы предоставить отсрочку платежа?";
---theme-text-4-ru: "Отсрочка платежа";
---theme-value-5-ru: "Я не согласен с требованием.";
---theme-text-5-ru: "Возражение";
---theme-value-6-ru: "Я не в состоянии оплатить требование.";
---theme-text-6-ru: "Неплатежеспособность";
-
---theme-value-1-pl: "Proszę o pokazanie aktualnego podsumowania moich niezapłaconych należności.";
---theme-text-1-pl: "Podsumowanie Należności";
---theme-value-2-pl: "Proszę o pokazanie aktualnego podsumowania moich dokonanych płatności.";
---theme-text-2-pl: "Historia Płatności";
---theme-value-3-pl: "Chcę ubiegać się o plan ratalny.";
---theme-text-3-pl: "Plan Ratalny";
---theme-value-4-pl: "Obecnie nie jestem w stanie zapłacić należności. Czy można przyznać mi odroczenie płatności?";
---theme-text-4-pl: "Odroczenie Płatności";
---theme-value-5-pl: "Sprzeciwiam się należności.";
---theme-text-5-pl: "Sprzeciw";
---theme-value-6-pl: "Nie jestem w stanie w ogóle zapłacić należności.";
---theme-text-6-pl: "Niewypłacalność";
-
---theme-value-1-ro: "Vă rog să-mi arătați o prezentare actuală a creanțelor restante.";
---theme-text-1-ro: "Prezentare Creanțe";
---theme-value-2-ro: "Vă rog să-mi arătați o prezentare actuală a plăților efectuate.";
---theme-text-2-ro: "Istoric Plăți";
---theme-value-3-ro: "Doresc să solicit un plan de rate.";
---theme-text-3-ro: "Plan de Rate";
---theme-value-4-ro: "Momentan nu pot achita creanța. Puteți să-mi acordați o amânare a plății?";
---theme-text-4-ro: "Amânare Plată";
---theme-value-5-ro: "Contest creanța.";
---theme-text-5-ro: "Contestație";
---theme-value-6-ro: "Nu sunt capabil să achit creanța.";
---theme-text-6-ro: "Insolvabilitate";
-
---theme-value-1-gr: "Παρακαλώ δείξτε μου μια τρέχουσα ανασκόπηση των ανεξόφλητων απαιτήσεών μου.";
---theme-text-1-gr: "Ανασκόπηση Απαιτήσεων";
---theme-value-2-gr: "Παρακαλώ δείξτε μου μια τρέχουσα ανασκόπηση των πραγματοποιημένων πληρωμών μου.";
---theme-text-2-gr: "Ιστορικό Πληρωμών";
---theme-value-3-gr: "Θέλω να υποβάλω αίτηση για σχέδιο δόσεων.";
---theme-text-3-gr: "Σχέδιο Δόσεων";
---theme-value-4-gr: "Αυτή τη στιγμή δεν μπορώ να εξοφλήσω την απαίτηση. Μπορείτε να μου χορηγήσετε αναβολή πληρωμής;";
---theme-text-4-gr: "Αναβολή Πληρωμής";
---theme-value-5-gr: "Εναντιώνομαι στην απαίτηση.";
---theme-text-5-gr: "Ένσταση";
---theme-value-6-gr: "Δεν είμαι σε θέση να εξοφλήσω την απαίτηση.";
---theme-text-6-gr: "Αφερεγγυότητα";
-
---theme-value-1-it: "Per favore, mostrami un riepilogo attuale delle mie richieste in sospeso.";
---theme-text-1-it: "Riepilogo Richieste";
---theme-value-2-it: "Per favore, mostrami un riepilogo attuale dei miei pagamenti effettuati.";
---theme-text-2-it: "Storico dei Pagamenti";
---theme-value-3-it: "Voglio richiedere un piano di rateizzazione.";
---theme-text-3-it: "Piano di Rateizzazione";
---theme-value-4-it: "Al momento non riesco a pagare la richiesta. Potete concedermi una proroga del pagamento?";
---theme-text-4-it: "Proroga del Pagamento";
---theme-value-5-it: "Contesto la richiesta.";
---theme-text-5-it: "Contestazione";
---theme-value-6-it: "Non sono in grado di pagare la richiesta.";
---theme-text-6-it: "Insolvenza";
-}
-
-
-/*  ######################## Ende legello ######################## */
-
   
  
   
@@ -1106,12 +1415,7 @@
   
   /* ++++++++++++++++++++++++ Anwendung Chati free ++++++++++++++++++++++++ */
   
-  :root {
-  --rules-context: SalesGlobal;
-  }
-  
-
-  
+    
   html, body {
     font-family: var(--company-font-family);
     background-color: var(--primary-background-color);
@@ -1475,7 +1779,30 @@
     position: relative;
   }
   
-  }   
+
+
+  #video-container {
+    width: 100%;
+    height: 400px;
+    margin-top: 10px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    position: relative;
+  }
+
+  iframe {
+    position: absolute;
+    top: 25%;
+    left: 0%;
+    height: 400px;
+    border: none;    
+  }
+
+
+
+
+}   
   
   
   
@@ -1508,42 +1835,50 @@
   
   
   #video-container {
-        display: none;
+    width: 100%;
+    max-height: 100%;
+    margin-top: 10px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    position: relative;
+  }
+
+  iframe {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    border: none;
   }
 
 
-
-/* ++++++++++++++++++++++++ ENDE Anwendung Chati free ++++++++++++++++++++++++ */
+  /* ++++++++++++++++++++++++ ENDE Anwendung Chati free ++++++++++++++++++++++++ */
   
   
   /* ++++++++++++++++++++++++ Anwendung Chati Sales ++++++++++++++++++++++++ 
   
-  :root {
-  --rules-context: SalesGlobal; 
-  --temperature: 1.0;
-  }
-
-  
+   
 
   #video-container {
-        width: 75%;
-        max-height: 100%;
-        margin: 20px auto;
-        overflow: hidden;
-        padding-top: 56.25%;
-    }
+    width: 100%;
+    max-height: 100%;
+    margin: 20px auto;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    position: relative;
+  }
 
-
-
-    iframe {
-        position: absolute;
-        top: 0%;
-        left: 0%;
-        width: 100%;
-        height: 100%;
-        max-height: 100%;
-        border: none;
-    }
+  iframe {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
 
   
   html, body {
@@ -1692,27 +2027,24 @@
   @media screen and (max-width: 850px) {
   
 
-    #video-container {
-        width: 100%;
-        max-height: 100%;
-        margin: 20px auto;
-        overflow: hidden;
-        padding-top: 56.25%;
-        z-index: 1000;
-    }
+  #video-container {
+    width: 100%;
+    max-height: 100%;
+    margin-top: 10px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    position: relative;
+  }
 
-  
-
-    iframe {
-        position: absolute;
-        top: 0%;
-        left: 0%;
-        width: 100%;
-        height: 100%;
-        max-height: 100%;
-        border: none;
-    }
-
+  iframe {
+    position: absolute;
+    top: 25%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
 
 
   
@@ -1967,19 +2299,14 @@
   
   
 
-
- ++++++++++++++++++++++++ ENDE Anwendung Chati Sales ++++++++++++++++++++++++ */
+  ++++++++++++++++++++++++ ENDE Anwendung Chati Sales ++++++++++++++++++++++++ */
 
 
 
   
   /* ++++++++++++++++++++++++ Anwendung Chatbot mit Kontaktformular ++++++++++++++++++++++++ 
   
-  :root {
-  --rules-context: SchuldnerGlobal;
-  --temperature: 0.3;
-  }
-  
+    
   #video-container {
         display: none;
   }
@@ -2733,7 +3060,7 @@
   
   
 
-  ++++++++++++++++++++++++ ENDE Anwendung Chatbot mit Kontaktformular ++++++++++++++++++++++++ */
+    ++++++++++++++++++++++++ ENDE Anwendung Chatbot mit Kontaktformular ++++++++++++++++++++++++ */
   
   
   /* ++++++++++++++++++++++++ Anwendung Chatbot für Factoring ++++++++++++++++++++++++ 
@@ -3593,10 +3920,7 @@
   
   /* ++++++++++++++++++++++++ Anwendung Chatbot mit Outlook ++++++++++++++++++++++++ 
   
-  :root {
-  --rules-context: ChatbotOutlook; 
-  }
-  
+   
   #logo-header {
       display: none;
   }
@@ -3737,17 +4061,18 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     color: var(--secondary-font-color) !important;
     font-family: var(--company-font-family);
     font-size: var(--media-font-size-text) !important;
+    background-color: var(--primary-company-background-color) !important;
     font-weight: bold !important;
     text-align: center !important;
     padding: 10px !important;
-    z-index: 1 !important;
+    z-index: 100000 !important;
     white-space: pre-wrap !important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 80% !important;
   }
 
@@ -5366,30 +5691,6 @@
 
 
 
-  .impressum-link {
-      display: inline-block;
-      font-family: var(--company-font-family);
-      font-size: var(--font-size-button);
-      text-decoration: none;
-      padding: 5px 10px;
-      border: 1px solid var(--primary-background-color);
-      border-radius: var(--primary-button-border-radius);
-      background-color: var(--primary-button-color);
-      color: var(--tertiary-font-color);
-      cursor: pointer;
-      width: auto;
-      text-align: center;
-      margin-left: 25px;
-      margin-right: 10px;
-      margin-top: -15px;
-  }
-  
-  .impressum-link:hover {
-      background-color: var(--secondary-button-color);
-  }
-
-
-
   .bot-table, .bot-table th, .bot-table td {
     font-family: var(--company-font-family) !important;
     color: var(--website-standard-font-color-dark) !important;
@@ -6231,8 +6532,8 @@
   
     <div class="title-content">
   
-      <p class="custom0a-p">Hallo, ich bin Legello,</p>
-      <p class="custom0b-p">ich liefere Ihnen <span class="highlight">KI-Hinweise auf Ihre Rechtsthemen.</span> Aktivieren Sie die Checkbox, wählen Sie Ihre Sprache und geben Sie in das Feld unten Ihre Frage ein. Ich antworte innerhalb weniger Sekunden.</p>
+      <p class="custom0a-p">Hallo, ich bin Chati,</p>
+      <p class="custom0b-p">ich bin gerne für Sie da, wenn Sie Fragen haben oder Unterstützung benötigen. <span class="highlight">Aktivieren Sie die Checkbox</span>, wählen Sie Ihre Sprache und geben Sie in das Feld unten Ihre Frage ein. Ich antworte innerhalb weniger Sekunden.</p>
       <p class="custom0c-p">Chat Assistant</p>
 
 
@@ -6373,7 +6674,15 @@
   
           </div>
   
-  
+          <div id="video-container">
+            <iframe 
+                id="video-frame"
+                src="" 
+                title="Video player" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+          </div>  
   
   
           <div id="chatbot-messages">
@@ -6389,14 +6698,7 @@
           </div>
   
   
-          <div id="video-container">
-            <iframe 
-                src="https://www.youtube.com/embed/A0UWBc44Gws" 
-                title="YouTube video player" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-            </iframe>
-          </div>
+
 
 
   
@@ -6462,57 +6764,82 @@
   <div id="footer">
 
     <div id="impressum" class="footer-left">
-      <a href="#" class="impressum-link">Impressum</a>
+      <a href="#" class="footer-link">Impressum</a>
     </div>
-    <div id="footer-contact-legello" class="footer-left">
-      <a href="#" id="FmpRateRP" class="send-email-link">Kontakt</a></p>
+    <div id="footer-contact" class="footer-left">
+      <a href="https://www.cream-collection.de/kontakt" target="_blank" class="footer-link">Kontakt</a>
     </div>
   
-
-
-
   </div>
   
     
+<script type="module">
+      // Versuche, das Modul zu importieren
+      try {
+        import('./videoToggle.js')
+            .then(({ toggleVideoContainer }) => {
+                const chatbotMessages = document.getElementById('chatbot-messages');
+                chatbotMessages.classList.add('hide-message');
+
+                // Event Listener hinzufügen, wenn das Modul erfolgreich geladen wurde
+                
+                document.getElementById('chatbot-consent-checkbox').addEventListener('change', function () {
+                    const consentGiven = this.checked;
+                    document.getElementById('chatbot-input').disabled = !consentGiven;
+                
+                    // Video-Container sichtbar/unsichtbar machen
+                    toggleVideoContainer(consentGiven);
+                });
+            })
+            .catch(() => {
+                // Modul konnte nicht geladen werden
+                console.warn('Das Modul videoToggle.js konnte nicht importiert werden.');
+                document.getElementById('video-container').style.display = 'none';
+            });
+    } catch (error) {
+        // Allgemeiner Fallback für ältere Browser oder unerwartete Fehler
+        console.error('Ein Fehler ist beim Import des Moduls aufgetreten:', error);
+        document.getElementById('video-container').style.display = 'none';
+    }
+
+</script>
   
+<script>
   
-  <script>
+  // Überwache das Kontrollkästchen und aktiviere/deaktiviere das - copyright cream5collection Stephan Vila - Eingabefeld und die Buttons je nach Zustand
+document.getElementById('chatbot-consent-checkbox').addEventListener('change', function() {
+    const consentGiven = this.checked;
+    document.getElementById('chatbot-input').disabled = !consentGiven;
+
+    const chatbotMessages = document.getElementById('chatbot-messages');
+
+    if (this.checked) {
+        // Nachricht dauerhaft entfernen, wenn das Häkchen gesetzt wird
+        chatbotMessages.classList.add('hide-message');
+    }
+
+    // Eingabefeld aktivieren/deaktivieren basierend auf dem Kontrollkästchen
+    document.getElementById('chatbot-input').disabled = !this.checked;
+
+    
+
+    const inputElement = document.getElementById('chatbot-input');
+
+    // Setze die Anfangshöhe
+    const initialHeight = inputElement.scrollHeight;
+    inputElement.style.height = `47px`;
   
-      // Überwache das Kontrollkästchen und aktiviere/deaktiviere das - copyright cream5collection Stephan Vila - Eingabefeld und die Buttons je nach Zustand
-      document.getElementById('chatbot-consent-checkbox').addEventListener('change', function() {
-        const consentGiven = this.checked;
-        document.getElementById('chatbot-input').disabled = !consentGiven;
-      
-        // Video-Container sichtbar/unsichtbar machen
-        //const videoContainer = document.getElementById('video-container');
-        //if (consentGiven) {
-        //    videoContainer.style.display = 'none'; // Video-Container ausblenden
-        //} else {
-        //    videoContainer.style.display = 'block'; // Video-Container wieder anzeigen
-        //}
-  
+    inputElement.addEventListener('input', function () {
+        // Höhe nur anpassen, wenn nötig
+        if (this.scrollHeight > initialHeight) {
+            this.style.height = 'auto'; // Zurücksetzen
+            this.style.height = `${this.scrollHeight}px`; // Dynamisch anpassen
+        }
+    });
 
 
-  const inputElement = document.getElementById('chatbot-input');
-
-  // Setze die Anfangshöhe
-  const initialHeight = inputElement.scrollHeight;
-  inputElement.style.height = `47px`;
-
-  inputElement.addEventListener('input', function () {
-      // Höhe nur anpassen, wenn nötig
-      if (this.scrollHeight > initialHeight) {
-          this.style.height = 'auto'; // Zurücksetzen
-          this.style.height = `${this.scrollHeight}px`; // Dynamisch anpassen
-      }
+  
   });
-
-
-
-
-
-  
-      });
   
       let conversationHistory = [];  // Speichert den Verlauf der Konversation
   
@@ -7062,7 +7389,7 @@
   function onBotMessageDisplayed() {
       console.log("onBotMessageDisplayed wurde aufgerufen");
       setTimeout(() => {
-          scrollBotWindowDown(15); // Scrollt das Bot-Fenster 5 Zeilen nach unten
+          scrollBotWindowDown(15); // Scrollt das Bot-Fenster 15 Zeilen nach unten
       }, 100); // Kurze Verzögerung, um sicherzustellen, dass die Nachricht vollständig gerendert ist
   }
   
@@ -7150,13 +7477,13 @@
 
 
     // Start der Weihnachtsfunktion
-    if (!messageSent) {
-      const messagesContainer = document.getElementById('chatbot-messages');
-      if (messagesContainer) {
-        messagesContainer.classList.add('hide-message');
-      }
-      messageSent = true;
-    }
+    //if (!messageSent) {
+    //  const messagesContainer = document.getElementById('chatbot-messages');
+    //  if (messagesContainer) {
+    //    messagesContainer.classList.add('hide-message');
+    //  }
+    //  messageSent = true;
+    //}
     // Ende der Weihnachtsfunktion
 
     if (isWaitingForResponse) {
@@ -7348,7 +7675,9 @@
       fullMessage = fullMessage.replace(/```/g, '');  // Entferne alle übrigen ```
       fullMessage = fullMessage.replace(/^\s*html\s*$/gm, '');  // Entferne "html", wenn es alleine in einer Zeile steht
   
-  
+      // Ersetze zusammengehörige Doppelsterne (**text**) durch <strong>text</strong>
+      fullMessage = fullMessage.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+        
       // Zeige die empfangene Nachricht im Chatfenster an
       displayCleanedData(fullMessage);
   
@@ -7740,7 +8069,7 @@
   
   
   
-  document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
         const imageElement = document.getElementById('clara-image');
   
         if (imageElement) {
@@ -7755,8 +8084,21 @@
           console.error('Bild-Element nicht gefunden');
         }
       });
-  
-  
+
+      
+// Abrufen der aktiven Video-URL aus dem :root-Bereich
+const videoUrl = getComputedStyle(document.documentElement).getPropertyValue('--start-video-url').trim();
+
+// HTML-Element für das Video-Frame abrufen
+const videoFrame = document.getElementById("video-frame");
+
+// Video-URL setzen oder Video-Container ausblenden, wenn keine URL definiert ist
+if (videoUrl) {
+    videoFrame.src = videoUrl.replace(/"/g, ""); // Entfernt Anführungszeichen
+} else {
+    document.getElementById("video-container").style.display = "none";
+}
+ 
   
   
   
@@ -9283,48 +9625,43 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   
-    //function checkForSuggestedLink() {
-    //    const lastBotMessage = document.querySelector('.bot-message:last-child');
-    //    if (!lastBotMessage) {
-    //        console.warn('Keine .bot-message gefunden!');
-    //        return; // Beende die Funktion, wenn keine Nachricht vorhanden ist
-    //    }
-    //    updateInputState('.suggested-link');
-    //}
-
 
     function checkForSendEmailLink() {
-        const lastBotMessage = document.querySelector('.bot-message:last-child');
-        if (!lastBotMessage) {
-            console.warn('Keine .bot-message gefunden!');
-            return;
-        }
+      // Entsperre alle Felder zuerst
+      const inputField = document.getElementById("chatbot-input");
+      const inputIcon = document.getElementById("input-right-svg");
+      const dropdownField = document.getElementById("chatbot-themes");
+      const dropdownOption = document.getElementById("theme");
+  
+      if (inputField) inputField.disabled = false;
+      if (inputIcon) {
+          inputIcon.style.pointerEvents = "auto";
+          inputIcon.style.opacity = "1";
+      }
+      if (dropdownField) dropdownField.disabled = false;
+      if (dropdownOption) dropdownOption.disabled = false;
 
-        // Suche nach einem Link mit der Klasse 'send-email-link' innerhalb der letzten Bot-Nachricht
-        const sendEmailLink = lastBotMessage.querySelector('.send-email-link');
-        if (!sendEmailLink) {
-            console.warn('Kein send-email-link in der letzten Bot-Nachricht gefunden!');
-            return;
-        }
 
-        // Prüfen, ob die ID des Links ungleich "other" ist
-        if (sendEmailLink.id !== 'other') {
-            updateInputState('.send-email-link'); // Aufruf nur, wenn die ID nicht "other" ist
-        } else {
-            console.info('Die ID ist "other". updateInputState wird nicht aufgerufen.');
-        }
+      const lastBotMessage = document.querySelector('.bot-message:last-child');
+      if (!lastBotMessage) {
+          console.warn('Keine .bot-message gefunden!');
+          return;
+      }
+
+      // Suche nach einem Link mit der Klasse 'send-email-link' innerhalb der letzten Bot-Nachricht
+      const sendEmailLink = lastBotMessage.querySelector('.send-email-link');
+      if (!sendEmailLink) {
+          console.warn('Kein send-email-link in der letzten Bot-Nachricht gefunden!');
+          return;
+      }
+
+      // Prüfen, ob die ID des Links ungleich "other" ist
+      if (sendEmailLink.id !== 'other') {
+          updateInputState('.send-email-link'); // Aufruf nur, wenn die ID nicht "other" ist
+      } else {
+          console.info('Die ID ist "other". updateInputState wird nicht aufgerufen.');
+      }
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -9332,7 +9669,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const observer = new MutationObserver(() => {
         console.log('DOM geändert:', document.querySelectorAll('.bot-message'));
         setTimeout(() => {
-            checkForSuggestedLink();
             checkForSendEmailLink();
         }, 100); // Verzögerung, um sicherzustellen, dass das DOM aktualisiert ist
     });
@@ -9356,7 +9692,6 @@ document.addEventListener("DOMContentLoaded", function () {
         // Prüfe, ob es bereits eine .bot-message gibt
         if (initialBotMessage) {
             console.log('Initiale bot-message gefunden:', initialBotMessage);
-            checkForSuggestedLink();
             checkForSendEmailLink();
         } else {
             console.log('Keine initiale bot-message vorhanden.');
